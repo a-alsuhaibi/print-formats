@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div style="text-align:center; font-size:18px">
+    <h2 style="text-align:center">    سنـــد قبض عملاء   </h2>
+    <small class="sub-heading" style="text-align:center"> {{doc.name}}</small>
+</div>
+<br>
+<div>
+    <table width="100%" dir="rtl" style="text-align:center; font-size:16px">
+        <tr>
+            <td style="text-align: right;"><strong>العميل : {{doc.client_name or ""}} </strong></td>
+             <td> التاريخ :{{doc.posting_date or ""}} </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <table width="100%" dir="rtl" style="text-align:center; font-size:14px" border="1">
+        <tr>
+                 <th colspan="1" style="background:#abd0eb8c;">  مناولــــة </th>
+                <th colspan="9">{{doc.hand_of or ""}}</th>
+               
+            </tr>
+         <tr>
+                 <th colspan="3" style="background:#abd0eb8c;">  نوع الـــدفع</th>
+                <th colspan="6">{{doc.payment_type or ""}}</th>
+               
+            </tr>
+         <tr>
+                 <th colspan="3" style="background:#abd0eb8c;"> العملـــة</th>
+                <th colspan="6">{{doc.currency or ""}}</th>
+               
+            </tr>
+            <tr>
+                 <th colspan="3" style="background:#abd0eb8c;"> المبلـــغ</th>
+                <th colspan="6">{{doc.get_formatted('amount')}}</th>
+               
+            </tr>
+            <tr>
+                 <th colspan="3" style="background:#abd0eb8c;">اجمالي المبالغ كتابةً</th>
+                <th colspan="6"></th>
+               
+            </tr>
+    </table>
+<!--<br>-->
+</div>
+
+
+
+<br>
+<div class="section-header"></div>
+<strong>الاسم :____________________</strong>
+<strong>التوقيع :____________________</strong>
+  
+  
+  
+<br>
+<br>
+<br>
+<table style="background-color: white; width: 100%; direction: rtl; font-size: 7px; border-style: dotted; border-width: 1px;">
+      <tbody><tr style="background-color: white;">
+        <th style="font-size: 7px;" width="33%">
+        طُبع بواسطة: 
+            {{frappe.get_fullname(frappe.session.user)}}
+        </th>
+    
+      <th style="font-size: 7px;" width="33%">
+          انشأ من قبل : 
+          {{frappe.get_fullname(doc.owner)}}
+       
+           
+        </th>
+        <th style="font-size: 7px;" width="33%">
+          تاريخ الطباعة:
+           {{ frappe.utils.now() }}
+        </th>
+      </tr>
+    
+    </tbody>
+</table>
+<!--</div>-->
+
+</body>
+</html>

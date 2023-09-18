@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+
+  <div class="info-container  " style="height: auto;border:1px solid black;padding: 5px;   ">
+<div class="d-flex"  style="border-bottom: 1px solid; padding-bottom: 5px;">
+<div >
+  
+  <h5 style="padding:0px 5px;" class="text-center">التاريخ </h5>
+  <div class="main-content-info-container w-200px pb-3px height-35px  fs-11px " >#{{doc.posting_date}}#</div>
+</div>
+  <h4 class="main-content-info-container w-300px pb-3px height-35px mt-20px m-auto" >سنـــد قيد دائن </h4>
+  <div >
+    <h5 style="padding:0px 5px;" class="text-center">رقم الاشعار </h5>
+
+<div class="main-content-info-container w-137px pb-3px height-35px  fs-11px"  >
+  {{doc.name}}
+
+</div>
+</div>
+
+</div>
+    
+<div class=" card-info">
+
+  <div class="" style="width: 600px;padding: 5px; 
+  "> 
+<div class="d-flex">
+<div class="d-flex mt-5 " style="column-gap: 20px;">
+  <label class="w-100px text-right">  السيد :</label>
+  <div class="mt-0">
+  <label class="mt-5">{{doc.receipt_client_name or ""}}  </label>
+  <label class="">..........................................................................................</label>
+  </div>
+  </div>
+  <div class="mt-5 " style="column-gap: 20px;">
+    <label class="w-200px text-center">  رقم الحساب :</label>
+    <div class="mt-0">
+    <label class="mt-5 mx-5 text-center">{{frappe.db.get_value("Client", doc.receipt_client, "client_number") or ""}}  </label>
+    </div>
+    </div>
+</div>
+<div style="width: 70%;margin: auto;">
+<h5 class="m-0 p-0" style="flex-wrap: nowrap;width: 493px;">
+  نـــــــود أشعــــــاركــــــم
+  أننــا قيدنا لحســـابــــكم لدينــــا  حسب التفاصيل التالية
+</h5>
+<div class="d-flex">
+<div class="d-flex">
+  <div class="mt-5 text-center" style="column-gap: 20px;">
+    <div>
+    <label class="w-100px text-right fs-11px mt-0 p-0" style="font-style: 10px !important;"> عملة الحساب</label>
+    </div>
+    <div>
+    <label class="text-right border-1px mt-0 p-0 p-5px " >  {{ doc.currency or""}}  </label>
+    </div>
+    </div>
+</div>
+<div class="d-flex">
+ <div class="mt-5 text-center" style="column-gap: 20px;">
+   <div>
+   <label class="w-100px text-right fs-11px mt-0 p-0" style="font-style: 10px !important;">  مبلغ الحساب</label>
+   </div>
+   <div class="amount-container-div">
+   <label class="text-right border-1px mt-0 p-0 p-5px amount-color" >  # {{ doc.amount or""}} # </label>
+   </div>
+   </div>
+</div>
+</div>
+<label class="text-right border-1px p-5px" >   {{money_in_words(doc.amount, doc.currency) or""}} </label>
+</div>
+
+<div class="p-5px d-flex" >
+<label class="w-100px text-right mt-0 p-0">  البيان :</label>
+<div class="border-2px mt-0 p-0 p-5px w-70pr">
+  <label class="text-right " > مقابل تحويل لحسابكم  {{ doc.currency or""}} لدينا بتاريخ  {{ doc.posting_date or""}} <br>
+  من حساب السيد:  {{ doc.owner_client_name or""}} 
+  </label>
+  </div>
+</div>
+
+<table class="mt-5" style="background-color: white; width: 100%; direction: rtl; font-size: 7px; border-style: dotted; border-width: 1px;">
+  <tbody><tr style="background-color: white;">
+    <th style="font-size: 7px;" width="33%">
+    طُبع بواسطة: 
+        {{frappe.get_fullname(frappe.session.user)}}
+    </th>
+
+  <th style="font-size: 7px;" width="33%">
+      انشأ من قبل : 
+      {{frappe.get_fullname(doc.owner)}}
+   
+       
+    </th>
+    <th style="font-size: 7px;" width="33%">
+      تاريخ الطباعة:
+       {{ frappe.utils.now() }}
+    </th>
+  </tr>
+
+</tbody>
+</table>
+
+
+
+  </div>
+
+</div>
+  </div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700&display=swap');
+
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin: 0px !important;
+  }
+
+ label{
+   font-weight: bold !important; 
+ 
+}
+.print-format .img-style{
+    float: right;
+    margin-top: 5px;
+  }
+  .fs-11px{
+    font-size: 11px;
+  }
+  .w-137px{
+width: 137px;
+  }
+  *{
+ font-family: 'Tajawal', sans-serif;
+  margin:0px;
+  padding: 0px;
+}
+.height-35px{
+height: 35px !important;
+
+}
+.main-container{
+  margin: auto;
+}
+.m-auto{
+  margin: auto;
+}
+.print-format  h5, .print-format label{
+  font-size: 16px;
+  color:black !important;
+}
+.d-flex{
+  display: flex !important;
+}
+.justify-between{
+  justify-content: space-between  !important;
+}
+.justify-center{
+  justify-content: center  !important;
+}
+.dir-rtl{
+  direction: rtl;
+}
+.dir-ltr{
+  direction: ltr;
+}
+.bg-red{
+  background-color: red;
+}
+.bg-green{
+  background-color: green;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.text-left{
+  text-align: left;
+}
+.w-6{
+  width: 6rem;
+}
+.m-0{
+  margin: 0px !important;
+}
+.mx-5{
+  margin: 0px 5px;
+}
+.mt-40px{
+  margin-top: 40px;
+}
+.mt-5{
+  margin-top: 5px !important;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.my-5{
+margin-top: 0px !important;
+}
+.mt-28px{
+  margin-top: 28px;
+}
+.mt-20px{
+  margin-top: 20px;
+}
+.p-0{
+  padding: 0px !important;
+}
+.p-10px{
+  padding: 10px !important;
+}
+.p-5px{
+  padding: 5px !important;
+}
+.mx-10px{
+  margin: 0px 10px;
+}
+.info-container{
+
+}
+.raduis-5{
+  border-radius: 5px;
+}
+.color-black{
+  color: black;
+}
+ .main-content-info-container{
+ font-weight: bold;
+  border: 1.5px solid;
+  height: 20px;
+  text-align: center;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: white;
+
+}
+.border-1px{
+  border:1px solid black;
+}
+.border-2px{
+  border:2px solid black;
+}
+.w-100px{
+  width: 100px;
+}
+.w-50px{
+  width: 50px;
+}
+.w-110px{
+  width: 110px;
+}
+.w-200px{
+  width: 200px;
+}
+.w-300px{
+  width: 300px;
+}
+.w-400px{
+  width: 400px;
+}
+.w-70pr{
+width: 70% !important;
+}
+.w-30pr{
+  width: 30%;
+}
+.card-info{
+  /* position: absolute; */
+  /* margin-top: 20px; */
+}
+.amount-container{
+  border: 1px solid;
+  margin-top: -2px;
+  padding: 3px 10px;
+  
+   /* width: 350px; */
+}
+.amount-container-div .amount-color{
+ color :#332584  !important;
+}
+.w-100{
+  width: 100px;
+}
+.mt-0{
+margin-top: 0px;
+}
+.border-bottom-none{
+  border-bottom: 0px;
+}
+.p-5px{
+  padding: 5px;
+}
+.mt-20px{
+  margin-top: 20px;
+}
+.mt-10px{
+  margin-top: 10px;
+}
+
+</style>
+</body>
+</html>
