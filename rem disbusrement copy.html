@@ -6,89 +6,88 @@
   <title>Document</title>
 </head>
 <body>
-    
   <div class="remittance-disburesment dir-rtl mt-10px">
     <div class="d-flex text-center" >
       <div class="w-200px" >
-        <label style="padding:0px 5px;">المبلغ {{_(doc.currency)}}</label>
+        <h4 style="padding:0px 5px;">المبلغ {{doc.currency}}</h4>
       </div>
       <div  >
-        <label class="w-300px" style=" margin-right: 0px;padding:0px 5px;"> التاريخ {{ frappe.utils.format_datetime(doc.posting_date, 'yyyy-MM-dd HH:mm') }}</label>
+        <h4 class="w-300px" style=" margin-right: 0px;padding:0px 5px;"> التاريخ {{ frappe.utils.format_datetime(doc.posting_date, 'yyyy-MM-dd HH:mm') }}</h4>
       </div>
       <div class="w-200px text-right" style=" margin-right: 0px;padding:0px  ">
-        <label> رقم الحوالة</label>
+        <h4> رقم الحوالة</h4>
       </div>
       <div class="w-200px text-center" style=" margin-right: 0px;padding:0px  0px;">
-        <label> رقم السند</label>
+        <h4> رقم السند</h4>
       </div>   
       
       </div>
 
-      <div class="info-container mt-10px raduis-5 pt-10px" style="height: 360px;border:1px solid black;position: relative;">
+      <div class="info-container mt-10px raduis-5 " style="height: 365px;border:1px solid black;position: relative;">
   <div class="d-flex  " style="width: 100%;">
-    <label class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-15px" >#{{doc.amount}}#</label>
-    <label class="main-content-info-container w-200px pb-3px height-35px raduis-5 " >سند صرف حوالة</label>
-    <label class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-15px" >{{doc.express_number}}</label>
-    <label class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-11px" >{{doc.name}}</label>
+    <h4 class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-15px" >#{{doc.amount}}#</h4>
+    <h4 class="main-content-info-container w-200px pb-3px height-35px raduis-5 " >سند صرف حوالة</h4>
+    <h4 class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-15px" >{{doc.express_number}}</h4>
+    <h4 class="main-content-info-container w-200px pb-3px height-35px raduis-5 fs-11px" >{{doc.name}}</h4>
         
     <div class="card-info" style="width: 100%;">
-    <div class="d-flex" style="width: 100%;">
+    <div class="d-flex" style="width: 100%;margin-top: 15px;">
       <div class="" style="width:60%;padding: 5px;;   
       "> 
   <div class="d-flex mt-2 " style="column-gap: 20px;">
-    <label class="w-100px text-right">انا الموقع ادناه :</label>
+    <h4 class="w-100px text-right">انا الموقع ادناه :</h4>
   <div class=" mt-0">
-    <label class="mt-2">{{doc.recipient}} </label>
-    <label class="mt-minus-10">.............................................................</label>
+    <h5 class="mt-2">{{doc.recipient}} </h5>
+    <h4 class="mt-minus-10">.............................................................</h4>
   </div>
   </div>
   <div class="d-flex mt-2" style="column-gap: 20px;">
-    <label class="w-100px text-right">إستملت مبلغ :</label>
-    <label class="mt-2 amount-container text-right">  {{money_in_words(doc.amount, doc.currency) or""}}  </label>
+    <h4 class="w-100px text-right">إستملت مبلغ :</h4>
+    <h5 class="mt-2 amount-container text-right">  {{money_in_words(doc.amount, doc.currency) or""}}  </h5>
   </div>
   <div class="d-flex mt-2 " style="column-gap: 20px;">
-    <label class="w-100px text-right">  المحولة من :</label>
+    <h4 class="w-100px text-right">  المحولة من :</h4>
     <div class=" mt-0">
-      <label class="mt-2">{{doc.sender}} </label>
-      <label class="mt-minus-10">.............................................................</label>
+      <h5 class="mt-2">{{doc.sender}} </h5>
+      <h4 class="mt-minus-10">.............................................................</h4>
     </div>
   </div>
   <div class="d-flex mt-2" style="column-gap: 20px;">
-    <label class="w-100px text-right">   عن طريق :</label>
+    <h4 class="w-100px text-right">   عن طريق :</h4>
     <div class=" mt-0">
-      <label class="mt-2">{{doc.remittance_network}} </label>
-      <label class="mt-minus-10">.............................................................</label>
+      <h5 class="mt-2">{{doc.remittance_network}} </h5>
+      <h4 class="mt-minus-10">.............................................................</h4>
     </div>
   </div>
   <div class="d-flex mt-2" style="column-gap: 20px;">
-    <label class="w-100px text-right">   ملاحظات  :</label>
-    <label class="mt-2">.............................................................</label>
+    <h4 class="w-100px text-right">   ملاحظات  :</h4>
+    <h4 class="mt-2">.............................................................</h4>
   </div>
 
-  <div class=" mt-10px" style="padding: 5px;;margin: auto;border:1px solid black;">
+  <div class="mt-10px" style="padding: 5px;;margin: auto;border:1px solid black;">
 
     <div class="d-flex mt-2" style="column-gap: 20px;">
-      <label class="w-100px text-right">   استم المستلم  :</label>
-      <label class="mt-2">.............................................</label>
+      <h4 class="w-100px text-right">   استم المستلم  :</h4>
+      <h4 class="mt-2">.............................................</h4>
     </div>
 
     <div class="d-flex mt-2" style="column-gap: 20px;">
-      <label class="w-100px text-left">   توقيع المستلم  :</label>
-      <label class="mt-2">.............................................</label>
+      <h4 class="w-100px text-right">   توقيع المستلم  :</h4>
+      <h4 class="mt-2">.............................................</h4>
     </div>
 
 
 
   <div class="d-flex">
     <div class="d-flex mt-2" style="column-gap: 20px;">
-      <label class="w-100px text-right">    رقم الهاتف  :</label>
-      <label class="mt-2">........................</label>
+      <h4 class="w-100px text-right">    رقم الهاتف  :</h4>
+      <h4 class="mt-2">........................</h4>
     </div>
 
     <div class="d-flex mt-2" style="column-gap: 20px;">
       <div class="d-flex mt-10px" style="justify-content: flex-end;">
         <div class="w-100px signature-box-container mx-10px" style="float: left;">
-          <label for="" class="text-center  mx-10px w-100px mt-10px">البصمة</label>
+          <h4 for="" class="text-center  mx-10px w-100px mt-10px">البصمة</h4>
           <div class="w-100px" style=" padding: 20px 5px;
           border: 1px solid;">
       
@@ -123,28 +122,7 @@
   </div>
 
     </div>
-    <table class="mx-2" style="background-color: white; width: 99%; direction: rtl; font-size: 7px; border-style: dotted; border-width: 1px;">
-      <tbody><tr style="background-color: white;">
-        <th style="font-size: 7px;" width="33%">
-        طُبع بواسطة: 
-            {{frappe.get_fullname(frappe.session.user)}}
-        </th>
-    
-      <th style="font-size: 7px;" width="33%">
-          انشأ من قبل : 
-          {{frappe.get_fullname(doc.owner)}}
-      
-          
-        </th>
-        <th style="font-size: 7px;" width="33%">
-          تاريخ الطباعة:
-          {{ frappe.utils.now() }}
-        </th>
-      </tr>
-    
-    </tbody>
-    </table>
-    
+   
       </div>
 
       {%else %}
@@ -158,8 +136,30 @@
       </div>
 
     <style>
+ @media screen {
+  .print-format{
+      padding: 2px !important ;
+  }
+      
+      .print-format .letter-head {
+  margin: 0px !important;
+}
+      
+  }
+  .print-format .letter-head {
+  margin-bottom: 0px;
+}
+.print-format{
+    margin-top:0px;
+    margin-bottom:0px;
+  }
 
-      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700&display=swap');
+  .remittance-disburesment h4,h5{
+    margin: 0px;
+    padding: 0px
+  }
+
+   @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700&display=swap');
       .remittance-disburesment{
     font-family: 'Tajawal', sans-serif;
         
@@ -198,7 +198,7 @@
   .m-auto{
       margin: auto;
   }
-  .label,label{
+  .h4,h4{
       font-size: 16px;
   }
   .d-flex{

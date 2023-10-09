@@ -1,349 +1,360 @@
-<div class="remittance-receipt dir-rtl">
-  <!-- <hr class="color-black" style="width:100%"> -->
-
-  <div class="d-flex text-center" >
-    <div class="w-200px" >
-      <h5 style="padding:0px 5px;">المبلغ {{(doc.currency)}}</h5>
-    </div>
-    <div  >
-      <h5 class="w-300px" style=" margin-right: 0px;padding:0px 5px;"> التاريخ {{ frappe.utils.format_datetime(doc.posting_date, 'yyyy-MM-dd HH:mm') }}</h5>
-    </div>
-    <div class="w-200px text-right" style=" margin-right: 0px;padding:0px  5px;">
-      <h5> رقم الحوالة</h5>
-    </div>
-    <div class="w-100px text-center" style=" margin-right: 0px;padding:0px  5px;">
-      <h5> رقم السند</h5>
-    </div>   
-    
-    </div>
-
-    <div class="info-container  mt-10px raduis-5 d-flex" style="height: 345px;border:1px solid black;width:100%">
-  <h4 class="main-content-info-container w-200px  height-35px raduis-5 fs-15px" >#{{doc.amount}}#</h4>
-  <h4 class="main-content-info-container w-200px  height-35px raduis-5 " >سند ارسال حوالة</h4>
-  <h4 class="main-content-info-container w-200px  height-35px raduis-5 fs-15px" >{{doc.express_number}}</h4>
-  <h4 class="main-content-info-container w-137px  height-35px raduis-5 fs-11px" >{{doc.name}}</h4>
-      
-  <div class="d-flex  card-info">
-    <div class="" style="width: 90%;padding: 5px;   
-    "> 
-<div class="d-flex mt-10px">
-    <div class="d-flex mt w-400px" >
-        <label class="w-137px text-right">  مبلغ الحوالة :</label>
-       <div class=" mt-0">
-        <h4 class="m-0 p-0 mt-5">{{doc.amount}} </h4>
-       </div>
-      </div>
-
-      <div class="d-flex mt-5 w-400px">
-        <label class="w-137px text-right">المبلغ كتابة :</label>
-       <div class=" mt-0">
-        <h4 class="m-0 p-0 mt-5"> {{money_in_words(doc.amount, doc.currency) or""}} </h4>
-       </div>
-      </div>
-</div>
-<div class="d-flex">
-  <div class="d-flex mt-5  w-400px">
-    <label class="w-137px text-right">   خدمات التحويل :</label>
-    <div class=" mt-0">
-      <h4 class="m-0 p-0 mt-5">{{doc.total_commission}} </h4>
-     </div>
-  </div>
-
-  <div class="d-flex mt-5  w-400px">
-    <label class="w-137px text-right"> الاجمالي :</label>
-    <div class=" mt-0">
-      <h4 class="m-0 p-0 mt-5">{{doc.grand_total}} </h4>
-     </div>
-  </div>
-      
-</div>
-<div class="d-flex">
-    <div class="d-flex mt-5  w-400px" >
-        <label class="w-137px text-right">   اسم الوكيل :</label>
-        <div class=" mt-0">
-          <h4 class="m-0 p-0 mt-5">{{doc.remittance_network}} </h4>
-         </div>
-      </div>
-      <div class="d-flex mt-5  w-400px">
-          <label class="w-137px text-right">    عن طريق :</label>
-            <h4 class="m-0 p-0 mt-5">{{doc.from_territory}} </h4>
-           </div>
-</div>
-
-<div class="d-flex">
-    <div class="d-flex mt-5  w-400px">
-        <label class="w-137px text-right">   اسم المستلم :</label>
-        <div class=" mt-0">
-          <h4 class="m-0 p-0 mt-5">{{doc.recipient}} </h4>
-         </div>
-      </div>
-      <div class="d-flex mt-5  w-400px">
-          <label class="w-137px text-right">   رقم الهاتف :</label>
-            <h4 class="m-0 p-0 mt-5">{{doc.recipient_phone}} </h4>
-           </div>
-</div>
- 
-<div class="d-flex">
-    <div class="d-flex mt-5  w-400px">
-        <label class="w-137px text-right">   اسم المرسل :</label>
-        <div class=" mt-0">
-          <h4 class="m-0 p-0 mt-5">{{doc.sender}} </h4>
-         </div>
-      </div>
-      <div class="d-flex mt-5  w-400px">
-          <label class="w-137px text-right">   رقم الهاتف :</label>
-            <h4 class="m-0 p-0 mt-5">{{doc.sender_phone  }} </h4>
-           </div>
-</div>
-<div class="d-flex mt-5 ">
-  <label class="w-137px text-right">   ملاحظات  :</label>
-  <label class="mt-5">.............................................................</label>
-</div>
-
-
-  <div class="d-flex mt-5">
-    <div class="d-flex mt-5  w-400px">
-        <label class="w-137px text-right">    توقيع المرسل :</label>
-        <div class=" mt-0">
-          <h4 class="m-0 p-0 mt-5">.....................</h4>
-         </div>
-      </div>
-      <div class="d-flex mt-5  w-400px">
-          <label class="w-137px text-right">    توقيع الموظف :</label>
-            <h4 class="m-0 p-0 mt-5">.....................</h4>
-           </div>
-</div>
-
- <div class="d-flex mt-5">
-    <div class="d-flex mt-5  w-400px">
-        
-         </div>
-      
-     <div class="w-200px signature-box-container mx-10px">
-    <h5 for="" class="text-center w-100px mt-10px">الختم</h5>
-    <div class="w-200px" style=" padding: 20px 50px;
-    border: 1px solid;">
-
-    </div>
-
-</div>
-
-</div>
-
- 
-<div class="d-flex " >
-    <h6 style="width: 28%">     طُبع بواسطة: 
-            {{frappe.get_fullname()}}</h6>
-        <h6 style="width: 28%">           الفرع  : 
-          {{doc.branch or "" }}</h6>
-                <h6 style="width: 28%">     تاريخ الطباعة:
-           {{ frappe.utils.format_datetime(doc.posting_date,'yyyy-MM-dd HH:mm') }}</h6>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="remittance-receipt dir-rtl">
+    <!-- <hr class="color-black" style="width:100%"> -->
   
-          
-</div>
-
-
-
-</div>
- 
-</div>
-
-
-    </div>
- 
+    <div class="d-flex text-center" >
+      <div class="w-200px" >
+        <h5 style="padding:0px 5px;">المبلغ {{(doc.currency)}}</h5>
+      </div>
+      <div  >
+        <h5 class="w-300px" style=" margin-right: 0px;padding:0px 5px;"> التاريخ {{ frappe.utils.format_datetime(doc.posting_date, 'yyyy-MM-dd HH:mm') }}</h5>
+      </div>
+      <div class="w-200px text-right" style=" margin-right: 0px;padding:0px  5px;">
+        <h5> رقم الحوالة</h5>
+      </div>
+      <div class="w-200px text-right" style=" margin-right: 0px;padding:0px  5px;">
+        <h5> رقم السند</h5>
+      </div>   
+      
+      </div>
+  
+      <div class="info-container  mt-10px raduis-5 d-flex" style="height: 340px;border:1px solid black;width:100%">
+    <h4 class="main-content-info-container w-200px  height-35px raduis-5 fs-15px" >#{{doc.amount}}#</h4>
+    <h4 class="main-content-info-container w-200px  height-35px raduis-5 " >سند ارسال حوالة</h4>
+    <h4 class="main-content-info-container w-200px  height-35px raduis-5 fs-15px" >{{doc.express_number}}</h4>
+    <h4 class="main-content-info-container w-137px  height-35px raduis-5 fs-11px" >{{doc.name}}</h4>
+        
+    <div class="d-flex  card-info">
+      <div class="" style="width: 90%;padding: 5px;   
+      "> 
+  <div class="d-flex" style="margin-top: 15px;">
+      <div class="d-flex mt w-400px" >
+          <h5 class="w-137px text-right">  مبلغ الحوالة :</h5>
+         <div class=" mt-0">
+          <label class="m-0 p-0 mt-5">{{doc.amount}} </label>
+         </div>
+        </div>
+  
+        <div class="d-flex mt-5 w-400px">
+          <h5 class="w-137px text-right">المبلغ كتابة :</h5>
+         <div class=" mt-0">
+          <label class="m-0 p-0 mt-5"> {{money_in_words(doc.amount, doc.currency) or""}} </label>
+         </div>
+        </div>
   </div>
-    
-    
-<style>
-    
-    
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700&display=swap');
-
-/* h5,h4{
-  margin: 0px !important;
-  padding: 0px !important;
-} */
-
-.d-flex{
- font-weight: bold !important; 
-}
-.employee-signature {
-  flex-direction: column;
-  justify-content: center;
-}
-.signature-box-container{
-  float: left;
-    display: flex;
-
-}
-.print-format .img-style{
-  float: right;
-  margin-top: 5px;
-}
-.fs-11px{
-  font-size: 11px;
-}
-.w-137px{
-width: 137px;
-}
-.remittance-receipt{
-  font-family: 'Tajawal', sans-serif;
-}
-   .print-format label{
-        direction:rtl;
-    }
-    .img-style{
-      float: right;
-      margin-top: 5px;
-    }
-    .fs-11px{
-      font-size: 11px;
-    }
-    .fs-15px{
-      font-size: 15px;
-    }
-    .w-137px{
-width: 137px;
-    }
-    *{
-    margin:0px;
+  <div class="d-flex">
+    <div class="d-flex mt-5  w-400px">
+      <h5 class="w-137px text-right">   خدمات التحويل :</h5>
+      <div class=" mt-0">
+        <label class="m-0 p-0 mt-5">{{doc.total_commission}} </label>
+       </div>
+    </div>
+  
+    <div class="d-flex mt-5  w-400px">
+      <h5 class="w-137px text-right"> الاجمالي :</h5>
+      <div class=" mt-0">
+        <label class="m-0 p-0 mt-5">{{doc.grand_total}} </label>
+       </div>
+    </div>
+        
+  </div>
+  <div class="d-flex">
+      <div class="d-flex mt-5  w-400px" >
+          <h5 class="w-137px text-right">   اسم الوكيل :</h5>
+          <div class=" mt-0">
+            <label class="m-0 p-0 mt-5">{{doc.remittance_network}} </label>
+           </div>
+        </div>
+        <div class="d-flex mt-5  w-400px">
+            <h5 class="w-137px text-right">    عن طريق :</h5>
+              <label class="m-0 p-0 mt-5">{{doc.from_territory}} </label>
+             </div>
+  </div>
+  
+  <div class="d-flex">
+      <div class="d-flex mt-5  w-400px">
+          <h5 class="w-137px text-right">   اسم المستلم :</h5>
+          <div class=" mt-0">
+            <label class="m-0 p-0 mt-5">{{doc.recipient}} </label>
+           </div>
+        </div>
+        <div class="d-flex mt-5  w-400px">
+            <h5 class="w-137px text-right">   رقم الهاتف :</h5>
+              <label class="m-0 p-0 mt-5">{{doc.recipient_phone}} </label>
+             </div>
+  </div>
    
-    padding: 0px;
-}
-.height-35px{
-  height: 35px !important;
-
-}
-.main-container{
-    margin: auto;
-}
-.m-auto{
-    margin: auto;
-}
-.h5,label{
-    font-size: 16px;
-}
-.d-flex{
-    display: flex !important;
-}
-.justify-between{
-    justify-content: space-between  !important;
-}
-.justify-center{
-    justify-content: center  !important;
-}
-.dir-rtl{
-    direction: rtl;
-}
-.dir-ltr{
-    direction: ltr;
-}
-.bg-red {
-    background-color: red;
-}
-.bg-green{
-    background-color: green;
-}
-.text-center{
-    text-align: center;
-}
-.text-right{
-    text-align: right;
-}
-.text-left{
-    text-align: left;
-}
-.w-6{
-    width: 6rem;
-}
-.m-0{
+  <div class="d-flex">
+      <div class="d-flex mt-5  w-400px">
+          <h5 class="w-137px text-right">   اسم المرسل :</h5>
+          <div class=" mt-0">
+            <label class="m-0 p-0 mt-5">{{doc.sender}} </label>
+           </div>
+        </div>
+        <div class="d-flex mt-5  w-400px">
+            <h5 class="w-137px text-right">   رقم الهاتف :</h5>
+              <label class="m-0 p-0 mt-5">{{doc.sender_phone  }} </label>
+             </div>
+  </div>
+  <div class="d-flex mt-5 ">
+    <h5 class="w-137px text-right">   ملاحظات  :</h5>
+    <label class="mt-5">.............................................................</label>
+  </div>
+  
+  
+    <div class="d-flex mt-5">
+      <div class="d-flex mt-5  w-400px">
+          <h5 class="w-137px text-right">    توقيع المرسل :</h5>
+          <div class=" mt-0">
+            <label class="m-0 p-0 mt-5">.....................</label>
+           </div>
+        </div>
+        <div class="d-flex mt-5  w-400px">
+            <h5 class="w-137px text-right">    توقيع الموظف :</h5>
+              <label class="m-0 p-0 mt-5">.....................</label>
+             </div>
+  </div>
+  
+   <div class="d-flex mt-5">
+      <div class="d-flex mt-5  w-400px">
+          
+           </div>
+        
+       <div class="w-200px signature-box-container mx-10px">
+      <h5 for="" class="text-center w-100px mt-10px">الختم</h5>
+      <div class="w-200px" style=" padding: 20px 50px;
+      border: 1px solid;">
+  
+      </div>
+  
+  </div>
+  
+  </div>
+  
+   
+  <div class="d-flex " >
+      <h6 style="width: 30%">     طُبع بواسطة: 
+              {{frappe.get_fullname()}}</h6>
+          <h6 style="width: 30%">           الفرع  : 
+            {{doc.branch or "" }}</h6>
+                  <h6 style="width: 30%">     تاريخ الطباعة:
+             {{ frappe.utils.format_datetime(doc.posting_date,'yyyy-MM-dd HH:mm') }}</h6>
+    
+            
+  </div>
+  
+  
+  
+  </div>
+   
+  </div>
+  
+  
+      </div>
+   
+    </div>
+      
+      
+  <style>
+      
+      
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Tajawal:wght@700&display=swap');
+  
+      .remittance-receipt h5,h4{
     margin: 0px !important;
-}
-.mx-5{
-    margin: 0px 5px;
-}
-.mt-40px{
-    margin-top: 40px;
-}
-.mt-5{
-    margin-top: 5px !important;
-}
-.my-5{
-  margin-top: 0px !important;
-}
-.mt-28px{
-    margin-top: 28px;
-}
-.p-0{
     padding: 0px !important;
-}
-.mx-10px{
-    margin: 0px 10px;
-}
-.mt-10px{
-margin-top: 10px;
-}
-.info-container{
-
-}
-.raduis-5{
-    border-radius: 5px;
-}
-.color-black{
-    color: black;
-}
-.main-content-info-container{
-   font-weight: bold;
-    border: 1.5px solid;
-    height: 20px;
-    text-align: center;
-    margin-right: 10px;
-    padding: 5px;
-    background-color: white;
-    margin-top: -19px;
-    display: flex;
+  } 
+  
+  .d-flex{
+   font-weight: bold !important; 
+  }
+  .employee-signature {
     flex-direction: column;
     justify-content: center;
-}
-.w-100px{
-    width: 100px;
-}
-.w-110px{
-    width: 110px;
-}
-.w-200px{
-    width: 200px;
-}
-.w-300px{
-    width: 300px;
-}
-.w-400px{
-    width: 400px;
-}
-.w-70pr{
-  width: 70%;
-}
-.w-30pr{
-    width: 30%;
   }
-  .card-info{
-    position: absolute;
-    margin-top: 20px;
-
+  .signature-box-container{
+    float: left;
+      display: flex;
+  
   }
-  .amount-container{
-    border: 1px solid;
-    margin-top: -2px;
-    padding: 3px 10px;
-    
-     width: 350px;
+  .print-format .img-style{
+    float: right;
+    margin-top: 5px;
   }
-  .w-100{
-    width: 100px;
+  .fs-11px{
+    font-size: 11px;
   }
-  .mt-0{
-margin-top: 0px;
+  .w-137px{
+  width: 137px;
   }
-
-</style>
-
+  .remittance-receipt{
+    font-family: 'Tajawal', sans-serif;
+  }
+     .print-format label{
+          direction:rtl;
+      }
+      .img-style{
+        float: right;
+        margin-top: 5px;
+      }
+      .fs-11px{
+        font-size: 11px;
+      }
+      .fs-15px{
+        font-size: 15px;
+      }
+      .w-137px{
+  width: 137px;
+      }
+      *{
+      margin:0px;
+     
+      padding: 0px;
+  }
+  .height-35px{
+    height: 35px !important;
+  
+  }
+  .main-container{
+      margin: auto;
+  }
+  .m-auto{
+      margin: auto;
+  }
+  .h5,label{
+      font-size: 16px;
+  }
+  .d-flex{
+      display: flex !important;
+  }
+  .justify-between{
+      justify-content: space-between  !important;
+  }
+  .justify-center{
+      justify-content: center  !important;
+  }
+  .dir-rtl{
+      direction: rtl;
+  }
+  .dir-ltr{
+      direction: ltr;
+  }
+  .bg-red {
+      background-color: red;
+  }
+  .bg-green{
+      background-color: green;
+  }
+  .text-center{
+      text-align: center;
+  }
+  .text-right{
+      text-align: right;
+  }
+  .text-left{
+      text-align: left;
+  }
+  .w-6{
+      width: 6rem;
+  }
+  .m-0{
+      margin: 0px !important;
+  }
+  .mx-5{
+      margin: 0px 5px;
+  }
+  .mt-40px{
+      margin-top: 40px;
+  }
+  .mt-5{
+      margin-top: 5px !important;
+  }
+  .my-5{
+    margin-top: 0px !important;
+  }
+  .mt-28px{
+      margin-top: 28px;
+  }
+  .p-0{
+      padding: 0px !important;
+  }
+  .mx-10px{
+      margin: 0px 10px;
+  }
+  .mt-10px{
+  margin-top: 10px;
+  }
+  .info-container{
+  
+  }
+  .raduis-5{
+      border-radius: 5px;
+  }
+  .color-black{
+      color: black;
+  }
+  .main-content-info-container{
+     font-weight: bold;
+      border: 1.5px solid;
+      height: 20px;
+      text-align: center;
+      margin-right: 10px;
+      padding: 5px;
+      background-color: white;
+      margin-top: -19px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .w-100px{
+      width: 100px;
+  }
+  .w-110px{
+      width: 110px;
+  }
+  .w-200px{
+      width: 200px;
+  }
+  .w-300px{
+      width: 300px;
+  }
+  .w-400px{
+      width: 400px;
+  }
+  .w-70pr{
+    width: 70%;
+  }
+  .w-30pr{
+      width: 30%;
+    }
+    .card-info{
+      position: absolute;
+      margin-top: 20px;
+  
+    }
+    .amount-container{
+      border: 1px solid;
+      margin-top: -2px;
+      padding: 3px 10px;
+      
+       width: 350px;
+    }
+    .w-100{
+      width: 100px;
+    }
+    .mt-0{
+  margin-top: 0px;
+    }
+  
+  </style>
+  
+  
+</body>
+</html>
